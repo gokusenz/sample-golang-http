@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io"
+	"io/ioutil"
 	"log"
 	"net/http"
 	"os"
@@ -18,9 +18,14 @@ func main() {
 		log.Fatal(err)
 	} else {
 		defer response.Body.Close()
-		_, err := io.Copy(os.Stdout, response.Body)
+		responseData, err := ioutil.ReadAll(response.Body)
 		if err != nil {
 			log.Fatal(err)
 		}
+		responseString := string(responseData)
+		if err != nil {
+			log.Fatal(err)
+		}
+		fmt.Println("responseString : ", stripSpaces(responseString))
 	}
 }
