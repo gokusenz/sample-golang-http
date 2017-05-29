@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"regexp"
 )
 
@@ -11,10 +10,10 @@ func regex(str string, pattern string) []string {
 	r, _ := regexp.Compile(pattern)
 
 	result := r.FindStringSubmatch(str)
-	fmt.Println(result)
+	// fmt.Println(result)
 
-	for index, match := range result {
-		fmt.Printf("%d. %s\n", index, match)
-	}
+	// for index, match := range result {
+	// 	fmt.Printf("%d. %s\n", index, match)
+	// }
 	return result
 }
